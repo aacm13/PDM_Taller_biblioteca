@@ -1,10 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Activities.NewBookActivity">
+        android:layout_height="90dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Nuevo Libro"
+        android:textSize="35dp"
+        android:textColor="@color/white"
+        android:background="@color/colorBuff"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    />
+    <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Nombre"
+            android:inputType="textAutoComplete"
+            android:padding="6dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+    <EditText
+            android:id="@+id/edit_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Autor"
+            android:inputType="textAutoComplete"
+            android:padding="6dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+    <EditText
+            android:id="@+id/edit_editorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="Editorial"
+            android:inputType="textAutoComplete"
+            android:padding="6dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+    <EditText
+            android:id="@+id/isvn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="ISVN"
+            android:inputType="textAutoComplete"
+            android:padding="6dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+    <EditText
+            android:id="@+id/edit_summary"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="Resument"
+            android:inputType="textAutoComplete"
+            android:padding="6dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+
+    <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBuff"
+            android:text="Save"
+            android:textColor="@color/white" />
+
+</LinearLayout>
