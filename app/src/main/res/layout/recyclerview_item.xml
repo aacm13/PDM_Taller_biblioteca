@@ -12,7 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"
-            android:background="@color/white"/>
+
+            android:src="@drawable/ic_image_green_24dp"/>
     <TextView
             android:id="@+id/book_name"
             android:layout_width="match_parent"
