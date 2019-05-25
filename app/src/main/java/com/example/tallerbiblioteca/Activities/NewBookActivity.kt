@@ -6,15 +6,39 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.example.tallerbiblioteca.R
 import kotlinx.android.synthetic.main.activity_new_book.*
 
 class NewBookActivity : AppCompatActivity() {
 
+    private lateinit var editTitulo: EditText
+    private lateinit var editAutores: EditText
+    private lateinit var editEditorial: EditText
+    private lateinit var editISBN: EditText
+    private lateinit var editResumen: EditText
+    private lateinit var editTags: EditText
+    private lateinit var bAutores: Button
+    private lateinit var bTags: Button
+
+    private var autores = ArrayList<String>()
+    private var tags = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_book)
+
+
+        getEditTexts()
+        initButtons()
+
+
+
+
+
+
 
         //CHOOSE IMAGE BUTTON CLICK
         choose_image_button.setOnClickListener {
@@ -36,6 +60,32 @@ class NewBookActivity : AppCompatActivity() {
                 //system OS is < Marshmallow
                 pickImageFromGallery();
             }
+        }
+    }
+
+    fun getEditTexts(){
+
+        editTitulo = findViewById(R.id.book_name)
+        editAutores = findViewById(R.id.book_author)
+        editEditorial = findViewById(R.id.book_editorial)
+        editISBN = findViewById(R.id.book_isvn)
+        editResumen = findViewById(R.id.book_resumen)
+        editTags = findViewById(R.id.book_tags)
+        bAutores = findViewById(R.id.add_author_button)
+        bTags = findViewById(R.id.add_tags_button)
+    }
+
+    fun initButtons(){
+        bAutores.setOnClickListener{
+            autores.add(editAutores.text.toString())
+
+            editAutores.setText("")
+        }
+
+        bTags.setOnClickListener{
+            tags.add(editTags.text.toString())
+
+            editTags.setText("")
         }
     }
 

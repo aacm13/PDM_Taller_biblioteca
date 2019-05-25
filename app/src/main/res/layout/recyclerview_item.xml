@@ -8,7 +8,7 @@
         android:background="@color/colorAccent">
 
     <ImageView
-            android:id="@+id/info_text"
+            android:id="@+id/book_cover"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"
