@@ -34,33 +34,21 @@ class NewBookActivity : AppCompatActivity() {
         getEditTexts()
         initButtons()
 
+        button_save.setOnClickListener{
+            val intent = Intent()
 
+            intent.putExtra(EXTRA_TITULO, editTitulo.text.toString())
+            intent.putStringArrayListExtra(EXTRA_AUTORES, autores)
+            intent.putExtra(EXTRA_EDITORIAL, editEditorial.text.toString())
+            intent.putExtra(EXTRA_ISBN, editISBN.text.toString())
+            intent.putStringArrayListExtra(EXTRA_TAGS, tags)
+            intent.putExtra(EXTRA_RESUMEN, editResumen.text.toString())
 
+            setResult(Activity.RESULT_OK, intent)
 
-
-
-
-        //CHOOSE IMAGE BUTTON CLICK
-        choose_image_button.setOnClickListener {
-            //check runtime permission
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                    PackageManager.PERMISSION_DENIED){
-                    //permission denied
-                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE);
-                    //show popup to request runtime permission
-                    requestPermissions(permissions, PERMISSION_CODE);
-                }
-                else{
-                    //permission already granted
-                    pickImageFromGallery();
-                }
-            }
-            else{
-                //system OS is < Marshmallow
-                pickImageFromGallery();
-            }
+            finish()
         }
+
     }
 
     fun getEditTexts(){
@@ -87,6 +75,28 @@ class NewBookActivity : AppCompatActivity() {
 
             editTags.setText("")
         }
+
+        //CHOOSE IMAGE BUTTON CLICK
+        choose_image_button.setOnClickListener {
+            //check runtime permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED){
+                    //permission denied
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                    //show popup to request runtime permission
+                    requestPermissions(permissions, PERMISSION_CODE);
+                }
+                else{
+                    //permission already granted
+                    pickImageFromGallery();
+                }
+            }
+            else{
+                //system OS is < Marshmallow
+                pickImageFromGallery();
+            }
+        }
     }
 
     private fun pickImageFromGallery() {
@@ -101,6 +111,13 @@ class NewBookActivity : AppCompatActivity() {
         private val IMAGE_PICK_CODE = 1000;
         //Permission code
         private val PERMISSION_CODE = 1001;
+
+        const val EXTRA_TITULO = "titulo"
+        const val EXTRA_AUTORES = "autores"
+        const val EXTRA_EDITORIAL = "editorial"
+        const val EXTRA_ISBN = "isbn"
+        const val EXTRA_RESUMEN = "resumen"
+        const val EXTRA_TAGS = "tags"
     }
 
     //handle requested permission result
