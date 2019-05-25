@@ -14,22 +14,24 @@ interface BookEntityXAuthorEntityDAO {
 
     @Query("SELECT * FROM book INNER JOIN bookXauthor ON " +
             "book.book_id=bookXauthor.book_id WHERE " +
-            "user_repo_join.repoId=:repoId")
-             fun getUsersForRepository(): List<BookEntityXAuthorEntity>
+            "bookXauthor.tag_id=:Id")
+             fun getBooksForTags(Id:Int): List<BookEntityXAuthorEntity>
 
-    @Query("SELECT * FROM user INNER JOIN user_repo_join ON " +
-            "user.id=user_repo_join.userId WHERE " +
-            "user_repo_join.repoId=:repoId")
-    //fun getUsersForRepository(): List<BookEntityXAuthorEntity>
+    @Query("SELECT * FROM tag INNER JOIN bookXauthor ON " +
+            "author.author_id=bookXauthor.author_id WHERE " +
+            "bookXauthor.book_id=:Id")
+    fun getTagsForBooks(Id:Int): List<BookEntityXAuthorEntity>
 
-    @Query("SELECT * FROM repo INNER JOIN user_repo_join ON" +
-            "repo.id=user_repo_join.repoId WHERE " +
-            "user_repo_join.userId=:userId")
-            List<Repo> getRepositoriesForUsers(final int userId);
+
+
 }
 
 //fun getAllBooksFromAuthor(name: AuthorEntity):List<BookEntity>
 
+/*@Query("SELECT * FROM repo INNER JOIN user_repo_join ON" +
+        "repo.id=user_repo_join.repoId WHERE " +
+        "user_repo_join.userId=:userId")
+List<Repo> getRepositoriesForUsers(final int userId);*/
 
 /*
 SELECT column_name(s)
