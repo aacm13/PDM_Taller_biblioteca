@@ -23,6 +23,7 @@ public abstract class LibraryRoomDatabase: RoomDatabase() {
     abstract fun tagDAO(): TagDAO
 
     companion object {
+        @Volatile
         private var INSTANCE : LibraryRoomDatabase? = null
 
         fun getInstance(context: Context): LibraryRoomDatabase{
@@ -39,3 +40,4 @@ public abstract class LibraryRoomDatabase: RoomDatabase() {
         }
     }
 }
+
